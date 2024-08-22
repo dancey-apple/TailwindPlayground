@@ -1,4 +1,20 @@
-export default function QuestCards() {
+"use client";
+
+import React, { useState } from 'react';
+import NotificationModal from './notifications';
+
+const QuestCards = () => {
+
+    const [showModal, setShowModal] = useState(false);
+
+    const openModal = () => {
+        setShowModal(true);
+    };
+
+    const closeModal = () => {
+        setShowModal(false);
+    }
+
     return (  
         <div className='grid grid-cols-4 gap-4'>
             <div class="max-w-sm rounded overflow-hidden shadow-2xl rounded-xl hover:max-w-md bg-slate-500">
@@ -31,6 +47,12 @@ export default function QuestCards() {
                 <div class="px-6 pt-4 pb-2">
                 </div>
             </div>
+            <div id='notification-tester'>
+                <button onClick={showModal} className='hover:drop-shadow-3xl text-3xl p-2.5 bg-violet-400 rounded-full'>Notifications Tester</button>
+                {showModal && <NotificationModal closeModal={closeModal} />}
+            </div>
         </div>
     );
 }
+
+export default QuestCards;
